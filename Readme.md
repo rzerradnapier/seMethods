@@ -5,3 +5,6 @@ seMethods
 [![LICENSE](https://img.shields.io/github/license/rzerradnapier/devops.svg?style=flat-square)](https://github.com/rzerradnapier/devops/blob/master/LICENSE)
 
 [![Releases](https://img.shields.io/github/release/rzerradnapier/devops/all.svg?style=flat-square)](https://github.com/rzerradnapier/devops/releases)
+
+# DevOps
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/rzerradnapier/seMethods/Hello world action/develop?style=flat-square)
