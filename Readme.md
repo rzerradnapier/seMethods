@@ -7,4 +7,4 @@ seMethods
 [![Releases](https://img.shields.io/github/release/rzerradnapier/devops/all.svg?style=flat-square)](https://github.com/rzerradnapier/devops/releases)
 
 # DevOps
-![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/rzerradnapier/seMethods/Hello world action/develop?style=flat-square)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/rzerradnapier/seMethods/main.yml?branch=develop)
