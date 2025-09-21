@@ -96,9 +96,17 @@ public class App {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT emp_no, first_name, last_name "
-                            + "FROM employees "
-                            + "WHERE emp_no = " + ID;
+                    "SELECT e.emp_no, e.first_name, e.last_name, d.dept_name, " +
+                            "       CONCAT(m.first_name, ' ', m.last_name) AS manager_name, " +
+                            "       t.title, s.salary " +
+                            "FROM employees e " +
+                            "JOIN titles t       ON t.emp_no = e.emp_no AND CURRENT_DATE() BETWEEN t.from_date AND t.to_date " +
+                            "JOIN salaries s     ON s.emp_no = e.emp_no AND CURRENT_DATE() BETWEEN s.from_date AND s.to_date " +
+                            "JOIN dept_emp de    ON de.emp_no = e.emp_no AND CURRENT_DATE() BETWEEN de.from_date AND de.to_date " +
+                            "JOIN departments d  ON d.dept_no = de.dept_no " +
+                            "JOIN dept_manager dm ON dm.dept_no = d.dept_no AND CURRENT_DATE() BETWEEN dm.from_date AND dm.to_date " +
+                            "JOIN employees m    ON m.emp_no = dm.emp_no " +
+                            "WHERE e.emp_no = " + ID;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Return new employee if valid.
@@ -109,6 +117,10 @@ public class App {
                 emp.emp_no = rset.getInt("emp_no");
                 emp.first_name = rset.getString("first_name");
                 emp.last_name = rset.getString("last_name");
+                emp.title = rset.getString("title");
+                emp.salary = rset.getInt("salary");
+                emp.manager = rset.getString("manager_name");
+                emp.dept_name = rset.getString("dept_name");
                 return emp;
             }
             else
